@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Rakuten F2E Assignment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/css/materialize.min.css'>
+
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<!-- partial:index.partial.html -->
+
+<div id="app">
+  <h4 class="head"> CRUD</h4>
+  <div class="container">
+    <table class="z-depth-2" v-show="persons.length">  
+        <tr class="add_table">
+            <td>
+                <div >
+                    <label for="name">Name</label>
+                    <input placeholder="name" ref="name" v-model="input.name" id="name" type="text">
+                </div>
+            </td>
+            <td>
+                <div>
+                    <label for="phone">Phone</label>
+                    <input placeholder="phone" v-model="input.phone" id="phone" type="text">
+                </div>
+            </td>
+            <td>
+                <div>
+                    <label for="email">Email</label>
+                    <input placeholder="email" v-model="input.email" id="email" type="text">
+                </div>
+            </td>
+            <td>  
+                <a @click="add" class="add"> add data</a>
+            </td>
+        </tr>
+    </table>
+      
+    <table class="bordered centered z-depth-2 " v-show="persons.length">
+        <thead class="t_head">
+            <tr >
+                <th v-for="column in columns">
+                    {{column}}
+                </th>
+            </tr>
+        </thead>
+        <tbody class="t_body">
+            <tr v-for="(person,index) in persons">
+                <td >
+                    {{index+1}}
+                </td>
+                <td>
+                    {{person.name}}
+                </td>
+                <td>
+                    {{person.phone}}
+                </td>
+                <td>
+                    {{person.email}}
+                </td>
+                <td style="width: 18%;">
+                    <a href="#modal" @click="edit(index)" class="edit"> edit</a>
+                </td>
+                <td style="width: 18%;">
+                    <a @click="deplete(index)" class="deplete"> delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>
+
+  <div id="modal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4 class="center-align">Edit</h4>
+      <div class="row">
+        <form class="col s12">
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="name" id="name" type="text" v-model="editInput.name">
+              <label for="name">Name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input placeholder="phone" id="phone" type="text" v-model="editInput.phone">
+              <label for="phone">Phone</label>
+            </div>
+            <div class="input-field col s6">
+              <input placeholder="email" id="email" type="text" v-model="editInput.email">
+              <label for="email">Email</label>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+      <a href="#!" @click="update" class="edit">edit</a>
+    </div>
+  </div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js'></script>
+<script  src="./script.js"></script>
+
+</body>
+</html>
