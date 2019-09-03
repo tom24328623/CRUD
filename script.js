@@ -73,8 +73,6 @@ new Vue({
         }
         this.persons.sort(ordonner);
     },
-    
-    
   }
 });
 //sort table data
